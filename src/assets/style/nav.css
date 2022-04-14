@@ -1,0 +1,29 @@
+
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0px 8em;
+    background-color:rgb(23, 18, 35);
+}
+
+nav section{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+nav section:first-child h1{
+    color:white;
+    font-size:1.5rem;
+}
+
+nav section:last-child label{
+    padding:1em 1.3em;
+}
+
+nav label a{
+    color:white;
+    font-weight:bolder;
+    text-decoration: none;
+}
