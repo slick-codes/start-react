@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  height:100vh;
+  display:flex;
+  flex-flow:column;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -35,4 +39,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.sqaure{
+  height:5em; 
+  width:5em;
+  background:blue;
+}
+button{
+  margin-top:.5em;
+  border:none;
+  padding:1em;
+  cursor:pointer;
+}
+
+button:active{
+   background:rgb(169, 169, 169);
 }
