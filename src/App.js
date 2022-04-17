@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Input from './components/Input';
+import Header from './components/Header';
+import React from 'react';
+import Body from './components/Body'
 function App() {
+
+  
+  const [ name , setName  ] = React.useState("Paul")
+
+  const updateName = event =>{
+     setName(event.target.value)
+  } 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Input updateNameHandler={updateName} name={name} placeholder={name} />
+      <Header name={name} />  
+      <Body name={name} />
     </div>
   );
 }
