@@ -4,7 +4,8 @@
 const Box = function(props){
 
     const style = {
-        backgroundColor: props.darkMode? 'black' : 'gray'
+        backgroundColor: props.darkMode? 'black' : 'transparent',
+        borderColor: props.darkMode && 'transparent'
     }
 
 
