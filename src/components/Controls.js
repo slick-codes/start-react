@@ -1,6 +1,7 @@
 import React from "react";
 import "./../assets/styles/controls.css";
 import memeObject from "./../resources/memes";
+import MemeDisplay from "./MemeDisplay";
 
  
 
@@ -39,13 +40,8 @@ const Controls = function () {
           <button onClick={changeImage}>Get a new meme Image</button>
         </section>
       </div>
-      <div className="image__container">
-      <img src={ meme.randomImage } alt="" />
-      <div className="title__container">
-        <h1 className="top__title"> {meme.topText} </h1>
-        <h1 className="bottom__title"> {meme.bottomText} </h1>
-      </div>
-    </div>
+     <MemeDisplay topText={ meme.topText } bottomText={meme.bottomText} imageURL={ meme.randomImage } />
+
     </div>
   );
 };
