@@ -11,27 +11,39 @@ function memeGenerator() {
 }
 
 
-const Controls = function (props) {
+const Controls = function () {
   
   // eslint-disable-next-line no-unused-vars
-  const [memeURL, setMemeURL] = React.useState(memeGenerator())
-    
+  const [meme, setMeme] = React.useState({
+    topText: "",
+    bottomText: "",
+    randomImage: memeGenerator()
+  })
+  
+  function changeImage(){
+    setMeme( () => {
+      return { ...meme , randomImage: memeGenerator()}
+    })
+  }
+  const updateTopText = event => setMeme({...meme , topText: event.target.value})
+  const updateBottomText = event => setMeme({...meme , bottomText: event.target.value})
+
   return (
     <div>
       <div className="controls">
         <section>
-          <input type="text" placeholder="Top Section" />
-          <input type="text" placeholder="Bottom Section" />
+          <input type="text" onInput={updateTopText} placeholder="Top Section" />
+          <input type="text" onInput={updateBottomText} placeholder="Bottom Section" />
         </section>
         <section>
-          <button onClick={ () => setMemeURL( memeGenerator()) } >Get a new meme Image</button>
+          <button onClick={changeImage}>Get a new meme Image</button>
         </section>
       </div>
       <div className="image__container">
-      <img src={ memeURL } alt="" />
+      <img src={ meme.randomImage } alt="" />
       <div className="title__container">
-        <h1 className="top__title"> {props.topValue} </h1>
-        <h1 className="bottom__title"> {props.bottomValue} </h1>
+        <h1 className="top__title"> {meme.topText} </h1>
+        <h1 className="bottom__title"> {meme.bottomText} </h1>
       </div>
     </div>
     </div>
