@@ -6,7 +6,6 @@ import memeObject from "./../resources/memes";
 
 function memeGenerator() {
     const memes = memeObject.data.memes;
-    console.log(memes)
     const randomObj = memes[Math.floor(Math.random() * memes.length)];
     return randomObj.url
 }
@@ -14,7 +13,8 @@ function memeGenerator() {
 
 const Controls = function (props) {
   
-  const memeURL = React.useState(memeGenerator())
+  // eslint-disable-next-line no-unused-vars
+  const [memeURL, setMemeURL] = React.useState(memeGenerator())
     
   return (
     <div>
@@ -24,7 +24,7 @@ const Controls = function (props) {
           <input type="text" placeholder="Bottom Section" />
         </section>
         <section>
-          <button >Get a new meme Image</button>
+          <button onClick={ () => setMemeURL( memeGenerator()) } >Get a new meme Image</button>
         </section>
       </div>
       <div className="image__container">
