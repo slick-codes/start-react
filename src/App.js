@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
 function App() {
+
+  // eslint-disable-next-line no-unused-vars
+  const [inputObj , setInputObj] = React.useState({
+    firstName: "",
+    lastName: ""
+  })
+  
+  function updateState(event){
+    setInputObj( oldValue =>  ({ ...oldValue , [event.target.getAttribute('name')]: event.target.value}) )
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="text" placeholder="first Name" name="firstName" value={ inputObj.firstName } onChange={updateState} />
+      <input type="text" placeholder="first Name" name="lastName"  value={ inputObj.lastName } onChange={updateState}/>
     </div>
   );
 }
