@@ -37,6 +37,10 @@ form button{
   border-radius:.3em;
   border:none;
   background:rgb(254, 229, 4);
+  cursor:pointer;
+}
+form button:active{
+  background:rgb(254, 108, 4);
 }
 
 form label{

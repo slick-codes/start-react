@@ -7,7 +7,7 @@ function App() {
   const [formData , setFormData ] = useState({
     email: "",
     password: "",
-    forgottenPassword: "",
+    confirmPassword: "",
     isRegisterNewsLetter: false
   })
 
