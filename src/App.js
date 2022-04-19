@@ -1,21 +1,38 @@
 import React from "react";
+import './App.css';
+import {useState} from 'react';
 
 function App() {
 
-  // eslint-disable-next-line no-unused-vars
-  const [inputObj , setInputObj] = React.useState({
-    firstName: "",
-    lastName: ""
+  const [formData , setFormData ] = useState({
+    email: "",
+    password: "",
+    isRegisterNewsLetter: false
   })
-  
-  function updateState(event){
-    setInputObj( oldValue =>  ({ ...oldValue , [event.target.getAttribute('name')]: event.target.value}) )
+
+
+  const updateState = function(event){
+    // eslint-disable-next-line no-unused-vars
+    const {value , name , type , checked} = event.target
+    setFormData( oldFormData => ({...oldFormData , [name]: type === 'checkbox'? checked : value  }) )
+  }
+
+  const sendForm = function(event){
+    event.preventDefault()
+    console.log(formData)
   }
 
   return (
     <div className="App">
-      <input type="text" placeholder="first Name" name="firstName" value={ inputObj.firstName } onChange={updateState} />
-      <input type="text" placeholder="first Name" name="lastName"  value={ inputObj.lastName } onChange={updateState}/>
+      <form onSubmit={  sendForm   }>
+        <input type="text" name="email" value={ formData.email } placeholder="Email" onChange={updateState} />
+        <input type="password" name="password" value={ formData.password } placeholder="Password" onChange={updateState} />
+        <div>
+          <input type="checkbox" id="newsletter" value={ formData.isRegisterNewsLetter } name="isRegisterNewsLetter" onChange={updateState} />
+          <label htmlFor="newsletter">Signup to our Newsletter</label>
+        </div>
+        <button>Login</button>
+      </form>
     </div>
   );
 }
