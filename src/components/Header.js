@@ -1,7 +1,6 @@
 import logo from './../logo.svg';
 import './../assets/styles/nav.css';
 
-import Controls from './Controls';
 
 const Header = function(){
 
@@ -16,7 +15,6 @@ const Header = function(){
                     React Course - Project 3
                 </section>
             </nav>
-            <Controls />
         </header>
     )
 }

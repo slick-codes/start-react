@@ -58,6 +58,10 @@ nav section:first-child img{
     background:var(--gradient);
     border:none;
     border-radius: var(--radius);
+    cursor:pointer;
+}
+.controls section:last-child button:active{
+    background:black;
 }
 
 .image__container{

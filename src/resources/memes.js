@@ -1,4 +1,4 @@
-const MemesObject = {
+ const memes = {
     "success": true,
     "data": {
         "memes": [
@@ -806,4 +806,4 @@ const MemesObject = {
     }
 }
 
-export default MemesObject
+export default memes
