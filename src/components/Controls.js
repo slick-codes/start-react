@@ -7,7 +7,7 @@ import "./../assets/styles/controls.css";
 const Controls = function ( props ) {
 
   const { handlers } = props
-  console.log(handlers.changeImage)
+  // console.log(handlers.changeImage)
 
   return (
     <div>
