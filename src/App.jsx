@@ -1,16 +1,20 @@
 import Header from './components/Header'
 import Controls from './components/Controls'
 import './App.css';
-import memeObject from "./resources/memes";
+// import memeObject from "./resources/memes";
 import React from 'react';
 import MemeDisplay from './components/MemeDisplay'
 
-function memeGenerator() {
-  const memes = memeObject.data.memes;
-  const randomObj = memes[Math.floor(Math.random() * memes.length)];
-  return randomObj.url
-}
 
+async function memeGenerator( ){
+  try{
+  const response = await fetch('https://api.imgflip.com/get_memes')
+  const memesObject = response.json()
+  return memesObject.data.memes;
+  }catch(error){
+    return undefined
+  }
+}
 
 function App() {
 
@@ -18,13 +22,22 @@ function App() {
     const [meme, setMeme] = React.useState({
       topText: "",
       bottomText: "",
-      randomImage: memeGenerator()
+      randomImage: ""
     })
     
-    function changeImage(){
-      setMeme( () => {
-        return { ...meme , randomImage: memeGenerator()}
-      })
+    React.useEffect( function(){
+      (async function(){ changeImage()  })()
+      console.log('running')
+    }, [])
+
+
+   async function changeImage(){
+    (async function() {
+      const memes = await memeGenerator()
+      console.log(memes)
+      const randomObj = memes[Math.floor(Math.random() * memes.length)];
+      setMeme( oldMeme =>  ({ ...oldMeme , randomImage: memes[randomObj] }) )
+    })()
     }
 
     const updateTopText = event => setMeme({...meme , topText: event.target.value})
