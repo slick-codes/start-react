@@ -1,19 +1,22 @@
-import React from 'react';
-import './assets/style/App.css';
-import Navigation from './components/Navigation';
+import React from "react";
+import "./assets/style/App.css";
+import Navigation from "./components/Navigation";
+import SearchPanel from "./components/SearchPanel";
 
 function App() {
+  const [config, setConfig] = React.useState({
+    darkMode: false,
+  });
 
-  const [config , setConfig] = React.useState({
-    darkMode: false
-  })
-
-  const toggleDarkMode = () => setConfig( oldConfig => ( {...oldConfig, darkMode: !oldConfig.darkMode} ) )
-
+  const toggleDarkMode = () =>
+    setConfig((oldConfig) => ({ ...oldConfig, darkMode: !oldConfig.darkMode }));
 
   return (
     <div className="App">
-      <Navigation handlers={{ toggleDarkMode }} darkMode={ config.darkMode } />
+      <header>
+        <Navigation handlers={{ toggleDarkMode }} darkMode={config.darkMode} />
+        <SearchPanel />
+      </header>
     </div>
   );
 }
