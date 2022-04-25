@@ -1,7 +1,8 @@
 
 
-function Navigation(){
-
+function Navigation( props ){
+    const { toggleDarkMode } = props.handlers
+    const { darkMode } = props
 
     return (
         <nav>
@@ -9,7 +10,7 @@ function Navigation(){
                 Todo
             </section>
             <section>
-                <div className="darkmode__toggler"></div>
+                <div className={`darkmode__toggler ${ darkMode? 'dark' : "" }` }  onClick={ toggleDarkMode } > <div></div></div>
                 <button className="create__button">Add Todo</button>
             </section>
         </nav>

@@ -1,10 +1,20 @@
 
+
+:root{
+  --complementary-color: #1890ff;
+  --light-gray: rgba(235, 235, 235, 0.65);
+  --radius: .3em;
+  --global-transition: .3s;
+}
+
+
 #root{
   height:100vh;
   display: flex;
   padding-top:1em;
   /* align-items:center; */
   justify-content:center;
+  background-color:var(--light-gray);
 }
 
 .App{
@@ -17,28 +27,54 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgb(227, 227, 227);
+  background:white;
+  /* box-shadow: 0px 0px 14px 9px #00000005; */
+  border-radius:var(--radius);
 }
 .darkmode__toggler{
-  background:rgb(150, 150, 150);
+  background: var(--complementary-color);
   width: 2em;
   border-radius:30em;
-  border:solid 1px black;
+  cursor:pointer;
+  /* border:solid 1px black; */
 }
 
-.darkmode__toggler:after{
+.darkmode__toggler > div{
   content:"";
   display:block;
-  background:black;
-  width:50%;
-  height:1em;
+  background: white;
+  width:1.05em;
+  height:1.05em;
   border-radius:inherit;
+  border:solid 2px var(--complementary-color);
+  position:relative;
+  transition: var(--global-transition);
+  /* overflow:hidden; */
   /* transition:4s; */
 }
 
-.darkmode__toggler.active:after {
-  margin-left: 100%;
+.darkmode__toggler > div:after{
+  content:"";
+  display:block;
+  height: 100%;
+  width:100%;
+  position:absolute;
+  background:var(--complementary-color);
+  border-radius:inherit;
+  margin-left:40%;
+  transform-origin: right;
+  transition: var(--global-transition);
 }
+
+.darkmode__toggler.dark > div {
+  margin-left: calc(2em - 1.05em);
+}
+
+.darkmode__toggler.dark > div:after{
+  /* background-color:; */
+  transform: scale(0);
+}
+
 
 nav section:first-child{
   font-size:20px;
@@ -56,8 +92,9 @@ nav section:last-child{
 nav button{
   margin-left:1em;
   padding:.5em 2em;
-  background:rgb(0, 26, 255);
+  background-color: var(--complementary-color);
   color:white;
   font-weight:bolder;
-  border:solid .2em black;
+  border:none;
+  border-radius:var(--radius);
 }
