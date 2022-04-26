@@ -2,10 +2,10 @@ import Todo from "./Todo";
 
 function Todos(props) {
   const { todosArray } = props;
-  const { toggleTodoDisableState } = props.handlers
+  const { toggleTodoDisableState, deleteTodo } = props.handlers
 
   const todos = todosArray.map((todo, index) => (
-    <Todo key={index} todo={todo} id={ index } handlers={ { toggleTodoDisableState } }  disabled={ todo.disabled } />
+    <Todo key={index} todo={todo} id={ index } handlers={ { toggleTodoDisableState, deleteTodo } }  disabled={ todo.disabled } />
   ));
 
   return (

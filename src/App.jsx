@@ -3,13 +3,15 @@ import React from "react";
 import "./assets/style/App.css";
 import Navigation from "./components/Navigation";
 import SearchPanel from "./components/SearchPanel";
-import Todos from './components/Todos'
+import Todos from './components/Todos';
+import AddTodo from './components/AddTodo'
 
 let timeout = null
 function App() {
   const [config, setConfig] = React.useState({
     darkMode: false,
-    searchValue: ""
+    searchValue: "",
+    isShowCreateModal: false
   });
 
   const [ todosArray , setTodosArray] = React.useState([
@@ -24,6 +26,11 @@ function App() {
       disabled: true
     }
   ])
+
+  const toggleIsShowCreateModal = function(){
+    console.log('clickckc')
+    setConfig( oldConfig => ({ ...config, isShowCreateModal: !config.isShowCreateModal }) )
+  }
 
   const addTodo = function(){
     
@@ -58,7 +65,8 @@ function App() {
   return (
     <div className="App">
       <header>
-        <Navigation handlers={{ toggleDarkMode }} darkMode={config.darkMode} />
+        <AddTodo handlers={{ toggleIsShowCreateModal}} isShow={ config.isShowCreateModal } />
+        <Navigation handlers={{ toggleDarkMode, toggleIsShowCreateModal }} config={ config }  />
         <SearchPanel handlers={{ updateSearchValue }} searchValue={ config.searchValue } />
         <Todos todosArray={ todosArray } handlers={{deleteTodo, toggleTodoDisableState}} />
       </header>

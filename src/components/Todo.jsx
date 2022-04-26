@@ -2,7 +2,7 @@
 
 
 function Todo ( props ){
-    const { toggleTodoDisableState } = props.handlers 
+    const { toggleTodoDisableState, deleteTodo } = props.handlers 
     return (
         <div className="todo">
             <section>
@@ -13,7 +13,7 @@ function Todo ( props ){
                 <label htmlFor={`data-${props.id}`}>{props.todo.todo}</label>
             </section>
             <section>
-                <div className="todo__checkbox"></div>
+                <div className="todo__checkbox" onClick={ () => deleteTodo(props.id) }></div>
             </section>
         </div>
     )

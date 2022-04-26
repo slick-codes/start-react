@@ -1,8 +1,9 @@
 
 
 function Navigation( props ){
-    const { toggleDarkMode } = props.handlers
-    const { darkMode } = props
+    const { toggleDarkMode, toggleIsShowCreateModal } = props.handlers
+    const { darkMode } = props.config
+
 
     return (
         <nav>
@@ -11,7 +12,7 @@ function Navigation( props ){
             </section>
             <section>
                 <div className={`darkmode__toggler ${ darkMode? 'dark' : '' }` }  onClick={ toggleDarkMode } > <div></div></div>
-                <button className="create__button">Add Todo</button>
+                <button className="create__button" onClick={ toggleIsShowCreateModal } >Add Todo</button>
             </section>
         </nav>
     )

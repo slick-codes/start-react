@@ -20,13 +20,10 @@
   background: var(--complementary-color);
 }
 
-:highlight{
-  background:transparent;
-}
-
 .App{
   width:60%;
-  max-width:80em;
+  max-width:40em;
+  max-width:60em;
 }
 
 header{
@@ -222,4 +219,79 @@ nav button:active{
 
 .todo:last-child{
   border-bottom:none;
+}
+
+.create_todo{
+  display:flex;
+  justify-content: center;
+}
+
+.overlay{
+  height: 100vh;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:5;
+  width:100%;
+  background:rgba(10, 10, 10, 0.456);
+  backdrop-filter: blur(2px);
+}
+
+.create_todo .create__form{
+  width:40%;
+  background: white;
+  padding:2em;
+  position:absolute;
+  z-index:64;
+  top:0;
+  border-radius: .3em;
+  transform:translateY(0em);
+  transition: var( --global-transition);
+  transition-delay:0;
+}
+
+.create_todo.hide .create__form{
+  transform: translateY(-10em);
+}
+
+
+.create__form > div{
+  /* display:flex; */
+  flex-flow:column;
+  padding:.5em 0;
+}
+
+.create__form > div input,
+.create__form > div textarea{
+  padding:.6em .5em;
+  margin-top:.5em;
+  resize:none;
+  width:100%;
+}
+
+div > p{
+  font-size:13px;
+}
+
+.create__form button{
+  padding:.8em  1.6em;
+  border-radius:.3em;
+  background:var(--complementary-color);
+  border:none;
+  color:white;
+  /* font-family: poppins; */
+}
+
+.create_todo.hide{
+  opacity: 0;
+  pointer-events:none;
+}
+
+.txt{
+  display:flex;
+  align-items: center;
+}
+
+.txt p{
+  padding-left:.7em;
 }
