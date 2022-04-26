@@ -1,11 +1,13 @@
 
 
 :root{
-  --complementary-color: #1890ff;
-  --light-gray: #f2f2f2;
+  --complementary-color: #673ab7;
+  --light-gray: #f5f5f5;
   --radius: .3em;
   --global-transition: .3s;
-  --container-shadow: 0px 0px 12px 0px #0000002b;
+  --container-shadow: 0px 0px 20px 0px #00000040;
+  --call-to-action: rgb(255, 255, 0);
+  --light-border: solid 1px rgb(205, 205, 205);
 }
 
 
@@ -13,9 +15,13 @@
   height:100vh;
   display: flex;
   padding-top:1em;
-  /* align-items:center; */
+  align-items:center;
   justify-content:center;
-  background-color:var(--light-gray);
+  background: var(--complementary-color);
+}
+
+:highlight{
+  background:transparent;
 }
 
 .App{
@@ -27,7 +33,8 @@ header{
   box-shadow: var(--container-shadow);
   padding:.5em 3em;
   padding-top:2em;
-  background:white;
+  padding-bottom:2em;
+  background:var(--light-gray);
 }
 nav{
   padding:1em inherit;
@@ -98,12 +105,16 @@ nav section:last-child{
 nav button{
   margin-left:1em;
   padding:.5em 2em;
-  background-color: var(--complementary-color);
-  color:white;
+  background-color: var(--call-to-action);
+  color:blackwhite;
   font-weight:bolder;
   border:none;
   border-radius:var(--radius);
   cursor:pointer;
+}
+nav button:active{
+  background-color:black;
+  color:white;
 }
 
 .search{
@@ -125,18 +136,90 @@ nav button{
 
 .search .search__bar input{
   width:inherit;
-  padding:.7em 1em;
-  border:none;
+  padding:.9em 1em;
+  border:var(--light-border) ;
   border-radius:var(--radius);
-  background:var(--light-gray);
+  /* background:rgb(208, 208, 208); */
 }
 
 .search .search__button{
   position:absolute;
-  right:0em;
-  height:100%;
+  right:.25em;
+  margin-top:-.05em;
+  border:none;
+  height: calc(100% - .5em );
   width:7em;
-  border:solid 4px var(--light-gray);
+  /* border:solid 4px var(--light-gray); */
   background:var(--complementary-color);
   color:white;
+}
+
+.todos{
+  background: white;
+  padding:1em 0;
+  padding-bottom:0;
+  margin-top:2.5em;
+  border: var(--light-border);
+}
+.todo__header{
+  border-bottom:var(--light-border);
+  padding:1em 0;
+  margin-top:1em;
+}
+.todo__data{
+  padding:0px 1em;
+}
+
+.todo{
+  padding:1em 1em;
+  border-bottom:var(--light-border);
+  font-size:15px;
+  display: flex;
+  flex-flow: center;
+  align-items:center;
+}
+
+.todo__checkbox{
+  height:1em;
+  width:1em;
+  border:var(--light-border);
+}
+
+.todo section:last-child{
+  margin-left: auto;
+}
+
+.todo section:nth-child(2){
+  padding-left:1em;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  position:relative;
+}
+
+.todo__active_indicator{
+  height:.8em;
+  width:.8em;
+  border-radius:100%;
+  background:var(--complementary-color);
+  position:absolute;
+  left:.5em;
+}
+
+.todo section.deactivate .todo__active_indicator{
+  background:red;
+}
+
+.todo section:nth-child(2) label{
+  padding-left:1em;
+  cursor: pointer;
+  transform:translateY(-.2em);
+}
+
+.todo section:nth-child(2).deactivate label{
+  text-decoration: line-through;
+}
+
+.todo:last-child{
+  border-bottom:none;
 }
