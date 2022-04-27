@@ -14,28 +14,19 @@ function App() {
     isShowCreateModal: false
   });
 
-  const [ todosArray , setTodosArray] = React.useState([
-    {
-      todo: "going to learn how to play basket ball", 
-      describtion: "How to use a Todo",
-      disabled: false
-    },
-    {
-      todo: "going to  how to play basket ball", 
-      describtion: "How to use a Todo",
-      disabled: true
-    }
-  ])
+
+  const [ todosArray , setTodosArray] = React.useState([])
 
   const toggleIsShowCreateModal = function(){
     console.log('clickckc')
     setConfig( oldConfig => ({ ...config, isShowCreateModal: !config.isShowCreateModal }) )
   }
 
-  const addTodo = function(){
-    
-      console.log('Adding Todo')
+  const createTodo = function( todo ){
+    console.log('from create function \n', todo)
+    setTodosArray( oldTodo => [...oldTodo , { ...todo, timestamp: new Date() } ]  )
   }
+
 
   const deactivateAllTodo = function(){
     setTodosArray( oldTodo => oldTodo.map( todo => ({ ...todo, disabled: true}) ))
@@ -80,7 +71,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <AddTodo handlers={{ toggleIsShowCreateModal}} isShow={ config.isShowCreateModal } />
+        <AddTodo handlers={{ toggleIsShowCreateModal, createTodo}} isShow={ config.isShowCreateModal } />
         <Navigation handlers={{ toggleDarkMode }} config={ config }  />
         <SearchPanel handlers={{ updateSearchValue }} searchValue={ config.searchValue } />
         <Todos  todosArray={ todosArray } handlers={{deactivateAllTodo,deleteSelected, activateAllTodo,  deleteTodo, toggleTodoDisableState, toggleIsShowCreateModal}} />
