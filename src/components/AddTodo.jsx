@@ -2,7 +2,6 @@ function AddTodo( props ) {
 
     const { isShow } = props
     const { toggleIsShowCreateModal } = props.handlers
-    console.log(isShow)
 
   return (
     <div className={`create_todo ${ !isShow? 'hide': ''}`} >

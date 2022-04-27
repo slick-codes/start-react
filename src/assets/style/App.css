@@ -10,6 +10,9 @@
   --light-border: solid 1px rgb(205, 205, 205);
 }
 
+button{
+  cursor:pointer;
+}
 
 #root{
   height:100vh;
@@ -22,8 +25,7 @@
 
 .App{
   width:60%;
-  max-width:40em;
-  max-width:60em;
+  max-width:45em;
 }
 
 header{
@@ -78,6 +80,7 @@ nav{
 
 .darkmode__toggler.dark > div {
   margin-left: calc(2em - 1.05em);
+  background-color:yellow;
 }
 
 .darkmode__toggler.dark > div:after{
@@ -154,15 +157,40 @@ nav button:active{
 .todos{
   background: white;
   padding:1em 0;
+  padding-top:0;
   padding-bottom:0;
   margin-top:2.5em;
   border: var(--light-border);
 }
 .todo__header{
   border-bottom:var(--light-border);
-  padding:1em 0;
-  margin-top:1em;
+  padding:1em 1em;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
 }
+.todo__header button{
+  border:none;
+  padding:1em 2em;
+  background: var(--complementary-color);
+  color:white;
+  border-radius: var(--radius);
+}
+
+.todo__header section:first-child button:last-child{
+  margin-left:1em;
+}
+.todo__header section:first-child button{
+  background:gray;
+  padding:1em .5em;
+  color:white;
+  /* font-weight:bolder; */
+  font-size:.7rem;
+}
+.todo__header section:first-child button:hover{
+  text-decoration:underline;
+}
+
 .todo__data{
   padding:0px 1em;
 }
@@ -234,7 +262,8 @@ nav button:active{
   z-index:5;
   width:100%;
   background:rgba(10, 10, 10, 0.456);
-  backdrop-filter: blur(2px);
+  transition:var(--global-transition);
+  /* backdrop-filter: blur(2px); */
 }
 
 .create_todo .create__form{
@@ -246,14 +275,19 @@ nav button:active{
   top:0;
   border-radius: .3em;
   transform:translateY(0em);
-  transition: var( --global-transition);
+  transition: .5s;
   transition-delay:0;
+  opacity: 1;
 }
 
 .create_todo.hide .create__form{
-  transform: translateY(-10em);
+  transform: translateY(-16em);
 }
 
+.create_todo.hide{
+  opacity: 0;
+  pointer-events:none;
+}
 
 .create__form > div{
   /* display:flex; */
@@ -279,13 +313,10 @@ div > p{
   background:var(--complementary-color);
   border:none;
   color:white;
+  cursor:pointer;
   /* font-family: poppins; */
 }
 
-.create_todo.hide{
-  opacity: 0;
-  pointer-events:none;
-}
 
 .txt{
   display:flex;

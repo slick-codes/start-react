@@ -37,8 +37,23 @@ function App() {
       console.log('Adding Todo')
   }
 
+  const deactivateAllTodo = function(){
+    setTodosArray( oldTodo => oldTodo.map( todo => ({ ...todo, disabled: true}) ))
+  }
+
+  const activateAllTodo = function(){
+    setTodosArray( oldTodo => oldTodo.map( todo => ({ ...todo, disabled: false}) ))
+  }
+  
+  const deleteSelected = function(){
+    setTodosArray( oldTodo => {
+      return oldTodo.filter( todo => !todo.disabled)
+    })
+  }
+  
   const deleteTodo = function(key){
     setTodosArray( oldTodos => oldTodos.filter( ( todo , index) => index !== key) )
+    console.log(todosArray)
   }
 
   const toggleTodoDisableState = function(key){
@@ -66,9 +81,9 @@ function App() {
     <div className="App">
       <header>
         <AddTodo handlers={{ toggleIsShowCreateModal}} isShow={ config.isShowCreateModal } />
-        <Navigation handlers={{ toggleDarkMode, toggleIsShowCreateModal }} config={ config }  />
+        <Navigation handlers={{ toggleDarkMode }} config={ config }  />
         <SearchPanel handlers={{ updateSearchValue }} searchValue={ config.searchValue } />
-        <Todos todosArray={ todosArray } handlers={{deleteTodo, toggleTodoDisableState}} />
+        <Todos  todosArray={ todosArray } handlers={{deactivateAllTodo,deleteSelected, activateAllTodo,  deleteTodo, toggleTodoDisableState, toggleIsShowCreateModal}} />
       </header>
     </div>
   );
